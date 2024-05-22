@@ -15,11 +15,9 @@ public class DBManager : MonoBehaviour
     private string SQL_COUNT_ELEMNTS = "SELECT count(*) FROM Posiciones;";
     private string SQL_CREATE_POSICIONES = "CREATE TABLE IF NOT EXISTS Posiciones "
                                             + " (id INTEGER PRIMARY KEY AUTOINCREMENT," 
-                                            + " name TEXT NOT NULL,"
-                                            + " timestamp REAL NOT NULL,"
-                                            + " position_x REAL NOT NULL," 
-                                            + " position_y REAL NOT NULL,"
-                                            + " position_z REAL NOT NULL);";
+                                            + " position_x STRING NOT NULL," 
+                                            + " position_y STRING NOT NULL,"
+                                            + " position_z STRING NOT NULL);";
 
     private IDbConnection dbConnection;
 
@@ -37,7 +35,6 @@ public class DBManager : MonoBehaviour
 
         IDbConnection dbConnection = OpenDatabase();
         InitializeDB(dbConnection);
-        OnDestroy();
     }
 
     private IDbConnection OpenDatabase()
@@ -60,10 +57,19 @@ public class DBManager : MonoBehaviour
 
     public void SavePosition(CharacterPosition position)
     {
-        string command = "INSERT INTO ...";
+        float position_x = position.position.x;
+        float position_y = position.position.y;
+        float position_z = position.position.z;
+        string position_x1 = position_x.ToString();
+        string position_y1 = position_y.ToString();
+        string position_z1 = position_z.ToString();
+        Debug.Log(position);
+        string command = $"INSERT INTO Posiciones (position_x, position_y, position_z) VALUES ('{position_x1}', '{position_y1}', '{position_z1})'";
+        Debug.Log(command);
         IDbCommand dbCommand = dbConnection.CreateCommand();
         dbCommand.CommandText = command;
         dbCommand.ExecuteNonQuery();
+        Debug.Log("Posicion añadida");
     }
 
     private void OnDestroy()

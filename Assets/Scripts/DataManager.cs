@@ -42,10 +42,12 @@ public class DataManager : MonoBehaviour
         if(currentTime > prevTime + logInterval) {
             prevTime += logInterval;
             CharacterPosition cp = new CharacterPosition(player.name, currentTime, player.transform.position);
+            DBManager.Instance.SavePosition(cp);
             playerPos.positions.Add(cp);
             foreach (GameObject enemy in enemies) {
                 CharacterPosition en = new CharacterPosition(enemy.name, currentTime, enemy.transform.position);
                 enemyPos.positions.Add(en);
+                DBManager.Instance.SavePosition(en);
             }
         }
         if(currentTime > prevSaveTime + logSaveInterval) {
