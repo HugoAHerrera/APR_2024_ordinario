@@ -1,20 +1,50 @@
 <?xml version="1.0"?>
 <Positions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <positions>
-    <CharacterPosition />
-    <CharacterPosition />
-    <CharacterPosition />
-    <CharacterPosition />
-    <CharacterPosition />
-    <CharacterPosition />
-    <CharacterPosition />
-    <CharacterPosition />
-    <CharacterPosition />
-    <CharacterPosition />
-    <CharacterPosition />
-    <CharacterPosition />
-    <CharacterPosition />
-    <CharacterPosition />
-    <CharacterPosition />
+    <CharacterPosition>
+      <name>Player</name>
+      <timestamp>3.19007087</timestamp>
+      <position>
+        <x>-3.10773635</x>
+        <y>0.433607876</y>
+        <z>-3.36692882</z>
+      </position>
+    </CharacterPosition>
+    <CharacterPosition>
+      <name>Player</name>
+      <timestamp>4.186968</timestamp>
+      <position>
+        <x>-4.614795</x>
+        <y>0.5173987</y>
+        <z>-1.42042279</z>
+      </position>
+    </CharacterPosition>
+    <CharacterPosition>
+      <name>Player</name>
+      <timestamp>5.18717051</timestamp>
+      <position>
+        <x>-5.150075</x>
+        <y>0.5173987</y>
+        <z>-0.7280211</z>
+      </position>
+    </CharacterPosition>
+    <CharacterPosition>
+      <name>Player</name>
+      <timestamp>6.187066</timestamp>
+      <position>
+        <x>-5.685195</x>
+        <y>0.5173987</y>
+        <z>-0.03582623</z>
+      </position>
+    </CharacterPosition>
+    <CharacterPosition>
+      <name>Player</name>
+      <timestamp>7.187135</timestamp>
+      <position>
+        <x>-6.1351347</x>
+        <y>0.5173987</y>
+        <z>0.546184</z>
+      </position>
+    </CharacterPosition>
   </positions>
 </Positions>

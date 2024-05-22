@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DataManager : MonoBehaviour
 {
@@ -74,6 +75,8 @@ public class DataManager : MonoBehaviour
         string data = "[";
         foreach (CharacterPosition cp in playerPos.positions)
         {
+            Debug.Log(cp);
+            Debug.Log(JsonUtility.ToJson(cp));
             data += JsonUtility.ToJson(cp) + ",\n";
         }
         foreach (CharacterPosition cp in enemyPos.positions)
@@ -101,4 +104,5 @@ public class DataManager : MonoBehaviour
             serializer.Serialize(stream, enemyPos);
         }
     }
+
 }
