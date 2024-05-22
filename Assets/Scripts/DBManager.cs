@@ -13,7 +13,13 @@ public class DBManager : MonoBehaviour
     public static DBManager Instance { get; private set; }
     private string dbUri = "URI=file:mydb.sqlite";
     private string SQL_COUNT_ELEMNTS = "SELECT count(*) FROM Posiciones;";
-    private string SQL_CREATE_POSICIONES = "CREATE TABLE ...";
+    private string SQL_CREATE_POSICIONES = "CREATE TABLE IF NOT EXISTS Posiciones "
+                                            + " (id INTEGER PRIMARY KEY AUTOINCREMENT," 
+                                            + " name TEXT NOT NULL,"
+                                            + " timestamp REAL NOT NULL,"
+                                            + " position_x REAL NOT NULL," 
+                                            + " position_y REAL NOT NULL,"
+                                            + " position_z REAL NOT NULL);";
 
     private IDbConnection dbConnection;
 
@@ -29,23 +35,26 @@ public class DBManager : MonoBehaviour
             Instance = this;
         }
 
-        OpenDatabase();
-        //InitializeDB();
+        IDbConnection dbConnection = OpenDatabase();
+        InitializeDB(dbConnection);
+        OnDestroy();
     }
 
-    private void OpenDatabase()
+    private IDbConnection OpenDatabase()
     {
         dbConnection = new SqliteConnection(dbUri);
         dbConnection.Open();
         IDbCommand dbCommand = dbConnection.CreateCommand();
         dbCommand.CommandText = "PRAGMA foreign_keys = ON";
         dbCommand.ExecuteNonQuery();
+        return dbConnection;
     }
 
-    private void InitializeDB()
+    private void InitializeDB(IDbConnection dbConnection)
     {
         IDbCommand dbCmd = dbConnection.CreateCommand();
         dbCmd.CommandText = SQL_CREATE_POSICIONES;
+        Debug.Log("Base de datos creada o iniciada");
         dbCmd.ExecuteReader();
     }
 
